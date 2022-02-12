@@ -9,21 +9,21 @@ import { fetchData } from './fetchData.mjs'
   let Co2 = '' // Co2 Scrubber rating
   let zeroSubset
   let oneSubset
-  let mcvSubset // Most common value subset
-  let lcvSubset // Least common vl
+  let mcvSubset  // Most common value subset
+  let lcvSubset  // Least common value subset
   let remaining
   // A common value and a common value subset:
   // Least common value: Lcv, Least common value subset lcvSubset
   // Most common value: Mcv, Most common value subset lcvSubset
-  const commonValue = async (array, Acv, acvSubset, acvLen, what) => {
+  const commonValue = async (array, Acv, acvSubset, what) => {
     try {
-      for (let i = 0; i < acvLen; i++) {
+      for (let i = 0; i < array[0].length; i++) {
         switch (i) {
-          case 0:
+          case 0: // Learning to use filter instead of push
             zeroSubset = array.filter(array => array.substring(i, i + 1) === '0') // 0's in first bit
             oneSubset = array.filter(array => array.substring(i, i + 1) === '1') // 1's in first bit
             break
-          default:
+          default: // Learning to use filter instead of push
             zeroSubset = acvSubset.filter(acvSubset => acvSubset.substring(i, i + 1) === '0') // 0's in first bit
             oneSubset = acvSubset.filter(acvSubset => acvSubset.substring(i, i + 1) === '1') // 1's in first bit
             remaining = acvSubset.length
@@ -75,11 +75,11 @@ import { fetchData } from './fetchData.mjs'
   }
   // Main
   try {
-    const array = await (fetchData('utf8', './day3data.txt'))
-    const len = array[0].length
-    commonValue(array, Mcv, mcvSubset, len, 'Mcv') // First Pass - Most Common Value
-    commonValue(array, Lcv, lcvSubset, len, 'Lcv') // Second Pass - Least Common Value
-    for (let i = 0; i < len; i++) {
+    const array = await (fetchData('utf8', './day3data.txt')) // Using a module
+    commonValue(array, Mcv, mcvSubset, 'Mcv') // First Pass - Most Common Value
+    commonValue(array, Lcv, lcvSubset, 'Lcv') // Second Pass - Least Common Value
+    console.log('array length is', array.length)
+    for (let i = 0; i < array[0].length; i++) {
       Ogr += Mcv[i]
       Co2 += Lcv[i]
     }

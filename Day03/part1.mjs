@@ -11,7 +11,7 @@ const foo = async () => {
   try {
     const options = { encoding: 'utf8' }
     const filename = './day3data.txt'
-    const array = (await readFile(filename, options)).split('\r\n') // read file a split by line
+    const array = (await readFile(filename, options)).split('\n') // read file a split by line
     for (let i = 0; i < array.length; i++) {
       binaryString = array[i]
       if (i === 0) { // First time through initialize arrays of the string length

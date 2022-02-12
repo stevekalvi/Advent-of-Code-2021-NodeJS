@@ -8,7 +8,7 @@ const foo = async () => {
     let aim = 0
     let depth = 0
 
-    const array = (await readFile(fileName, options)).split('\r\n')
+    const array = (await readFile(fileName, options)).split('\n')
     for (let i = 0; i < array.length; i++) {
       array[i] = array[i].split(' ') // split on a space
       const distance = parseInt(array[i].pop())
