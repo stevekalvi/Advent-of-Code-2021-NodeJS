@@ -11,9 +11,8 @@ import { fetchData } from './fetchData.mjs'
   let mcvSubset  // Most common value subset
   let lcvSubset  // Least common value subset
   let remaining
-  // A common value and a common value subset:
-  // Least common value: Lcv, Least common value subset lcvSubset
-  // Most common value: Mcv, Most common value subset lcvSubset
+  // Least common value: Lcv, Least common value subset: lcvSubset
+  // Most common value: Mcv, Most common value subset: mcvSubset
   const commonValue = async (array, Acv, acvSubset, what) => {
     try {
       for (let i = 0; i < array[0].length; i++) {
