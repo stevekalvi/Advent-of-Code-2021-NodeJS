@@ -1,4 +1,3 @@
-// import { readFile } from 'fs/promises'
 import { fetchData } from './fetchData.mjs'
 
 // Anonymous asynchronous function
